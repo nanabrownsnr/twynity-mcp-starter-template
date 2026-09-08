@@ -156,14 +156,19 @@ fastmcp dev apps app/main.py
 
 ## 6. Install and test the backend
 
-Create a virtual environment and install development dependencies:
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then sync
+the locked runtime and development dependencies. uv creates and manages the
+project's `.venv` automatically:
 
 ```bash
-python -m venv .venv
-python -m pip install -r requirements-dev.txt
-python -m pytest -q
-python -m ruff check app tests
+uv sync --locked
+uv run pytest -q
+uv run ruff check app tests
 ```
+
+Add or remove Python packages with `uv add <package>` and development tools
+with `uv add --dev <package>`. Commit both `pyproject.toml` and `uv.lock` so
+local, CI, and container installs resolve to the same versions.
 
 The complete test suite expects the UI compilation step to have run first so it
 can verify the actual resource served to MCP clients.
@@ -171,7 +176,7 @@ can verify the actual resource served to MCP clients.
 ## 7. Run locally
 
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000
+uv run uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
 Available endpoints:
@@ -186,8 +191,9 @@ service. The manifest and health endpoints remain public.
 ## 8. Compile and deploy with Docker
 
 The Dockerfile is multi-stage. Its Node stage installs the locked UI
-dependencies and compiles `dist/index.html`; its Python stage installs the
-server and copies only the compiled UI into the runtime image. A local build is:
+dependencies and compiles `dist/index.html`; its Python stage uses the uv
+lockfile to install production dependencies and copies only the compiled UI
+into the runtime image. A local build is:
 
 ```bash
 docker build -t your-mcp:local .
@@ -207,6 +213,7 @@ registry, and GitOps deployment sequence.
 
 - Do not commit `.env`, runtime logs, `node_modules`, Python bytecode, or
   `app/ui/*/dist`.
+- Commit `uv.lock` so backend dependency resolution remains repeatable.
 - Commit `package-lock.json` so UI dependency resolution remains repeatable.
 - Rebuild the UI before local integration testing.
 - Let the Docker build produce the deployable UI bundle for releases.

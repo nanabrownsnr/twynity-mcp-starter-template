@@ -14,10 +14,16 @@ RUN npm run build
 
 FROM python:3.11-slim
 
+COPY --from=ghcr.io/astral-sh/uv:0.12.6 /uv /uvx /bin/
+
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+ENV UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy \
+    PATH="/app/.venv/bin:$PATH"
+
+COPY pyproject.toml uv.lock ./
+RUN uv sync --locked --no-dev
 
 COPY app/ ./app/
 COPY --from=ui-builder /ui/dist/ ./app/ui/say_hello/dist/

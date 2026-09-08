@@ -2,6 +2,7 @@ app/ui/*/node_modules/
 app/ui/*/dist/
 .mapvenv/
 .venv/
+.uv-cache/
 .env
 __pycache__/
 *.py[cod]
