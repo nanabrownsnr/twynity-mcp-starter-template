@@ -8,7 +8,12 @@ def register_tool(mcp):
     # AppConfig links this tool to the ui:// resource registered in
     # app/ui/say_hello/resource.py. An MCP Apps-capable client reads that
     # resource and delivers this tool's result to the UI.
-    @mcp.tool(app=AppConfig(resource_uri=VIEW_URI))
+    @mcp.tool(
+        app=AppConfig(
+            resource_uri=VIEW_URI,
+            visibility=["model", "app"],
+        )
+    )
     def say_hello(name: str = "World") -> ToolResult:
         """Create a personalised greeting and display it in the example UI.
 

@@ -7,7 +7,7 @@ A production-shaped starter for building a Python
 The template retains Twynity's authentication, licensing, usage reporting,
 manifest and health routes, container setup, and deployment workflow. The
 example feature is intentionally small: a `say_hello` tool renders
-`Hello, <name>!` inside a client-themed UI.
+`Hello, <name>!` inside an interactive, client-themed React UI.
 
 ## Understand the tool-to-UI flow
 
@@ -33,7 +33,7 @@ In this example:
   `ui://starter/hello.html` in its `AppConfig`.
 - `app/ui/say_hello/resource.py` registers that same URI and serves the
   compiled UI.
-- `app/ui/say_hello/src/app.js` receives the result and reads
+- `app/ui/say_hello/src/App.jsx` receives the result and reads
   `structuredContent.message`.
 - `app/ui/say_hello/index.html` and `src/style.css` define what the user
   sees inside the MCP client.
@@ -91,16 +91,26 @@ Every UI-enabled tool gets a matching folder under `app/ui/`. For example,
 app/ui/say_hello/
 |-- resource.py      # Registers the ui:// resource
 |-- index.html       # Document structure; your UI goes here
-|-- src/app.js       # MCP host connection and tool-result handling
+|-- src/App.jsx      # React UI, MCP hooks, and tool-result handling
+|-- src/main.jsx     # React entry point
 |-- src/style.css    # Client-aware presentation
 |-- package.json
 `-- vite.config.js
 ```
 
-The example uses host context and style variables supplied by compatible MCP
-clients. Always provide CSS fallbacks because hosts may expose different
-subsets of styling information. Render tool-provided values with safe DOM APIs
-such as `textContent`, not `innerHTML`.
+The example uses the official `@modelcontextprotocol/ext-apps/react` package.
+`useApp` owns the App connection, `useHostStyleVariables` applies the client's
+theme and CSS variables, `useHostFonts` installs client-provided font rules,
+and `useDocumentTheme` exposes the active theme reactively. Always provide CSS
+fallbacks because hosts may expose different subsets of styling information.
+React escapes rendered string values by default; do not bypass that protection
+with `dangerouslySetInnerHTML` for tool-provided content.
+
+The name input is a controlled React field. Submitting the form calls
+`say_hello` through `app.callServerTool`, then renders the returned
+`structuredContent.message`. Tools called from their UI need `"app"` in their
+`AppConfig.visibility`; this example uses `["model", "app"]` so both the model
+and UI can call it.
 
 ## 4. Link the tool and UI
 
