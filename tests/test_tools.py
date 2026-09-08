@@ -20,8 +20,13 @@ async def test_say_hello_returns_text_and_ui_data(mcp_instance, greeting_name):
     result = await tool.run({"name": greeting_name})
 
     assert tool.meta["ui"]["resourceUri"] == VIEW_URI
+    assert tool.meta["ui"]["visibility"] == ["model", "app"]
     assert result.content[0].text == "Hello, Ada!"
     assert result.structured_content == {"message": "Hello, Ada!"}
+    assert result.meta == {
+        "ui": {"resourceUri": VIEW_URI},
+        "ui/resourceUri": VIEW_URI,
+    }
 
 
 @pytest.mark.asyncio

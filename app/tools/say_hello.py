@@ -39,4 +39,5 @@ def register_tool(mcp):
         return ToolResult(
             content=message,
             structured_content={"message": message},
+            meta={"ui": {"resourceUri": VIEW_URI}, "ui/resourceUri": VIEW_URI},
         )
