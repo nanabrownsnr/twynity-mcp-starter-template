@@ -251,6 +251,3 @@ registry, and GitOps deployment sequence.
 - Commit `package-lock.json` so UI dependency resolution remains repeatable.
 - Rebuild the UI before local integration testing.
 - Let the Docker build produce the deployable UI bundle for releases.
-
-
-screenshot 
