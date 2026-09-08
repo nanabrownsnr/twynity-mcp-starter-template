@@ -16,3 +16,4 @@ async def test_hello_ui_resource_is_registered_and_bundled():
 
     assert "Your UI goes here" in html
     assert "starter-mcp-ui" in html
+    assert ".render(React.createElement" not in html
