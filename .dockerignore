@@ -1,0 +1,8 @@
+.git
+.env
+.pytest_cache
+**/__pycache__
+**/*.py[cod]
+app/ui/*/node_modules
+logs
+tests

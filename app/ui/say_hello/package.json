@@ -1,0 +1,15 @@
+{
+    "name": "fastmcp-app-starter-ui",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build"
+    },
+    "dependencies": {
+        "@modelcontextprotocol/ext-apps": "^1.7.0"
+    },
+    "devDependencies": {
+        "vite": "^7.1.7",
+        "vite-plugin-singlefile": "^2.3.0"
+    }
+}

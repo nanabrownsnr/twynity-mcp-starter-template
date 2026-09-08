@@ -1,0 +1,7 @@
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+# Keep the starter's default checks focused and predictable. Projects can add
+# stricter rules as their conventions mature.
+select = ["E4", "E7", "E9", "F", "I"]
