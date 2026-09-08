@@ -132,6 +132,24 @@ The MCP client discovers the URI in the tool metadata, reads the matching
 resource, renders it in a sandboxed iframe, and forwards tool results to the
 App SDK's `ontoolresult` handler.
 
+Also repeat the URI in the returned `ToolResult.meta`:
+
+```python
+return ToolResult(
+    content="A useful summary for the model",
+    structured_content={"message": "Data for the UI"},
+    meta={
+        "ui": {"resourceUri": VIEW_URI},
+        "ui/resourceUri": VIEW_URI,
+    },
+)
+```
+
+The nested value is the current MCP Apps representation and the flat value is
+retained for compatibility. Twynity clients inspect this response metadata to
+select the renderer immediately, avoiding an additional resource-discovery
+round trip. Keep both values aligned with the URI registered by the resource.
+
 ## 5. Compile the UI
 
 Generated frontend files are not committed. Install Node.js 20.19+ or 22.12+,

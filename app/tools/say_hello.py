@@ -39,5 +39,8 @@ def register_tool(mcp):
         return ToolResult(
             content=message,
             structured_content={"message": message},
+            # Twynity reads the renderer URI from the tool response so it can
+            # display the App without another resource-discovery round trip.
+            # Keep both the current nested form and the legacy flat form.
             meta={"ui": {"resourceUri": VIEW_URI}, "ui/resourceUri": VIEW_URI},
         )
