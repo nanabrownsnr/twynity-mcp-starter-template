@@ -1,3 +1,5 @@
+// Interactive say_hello MCP App and host bridge. Replace this component with
+// your UI while retaining the MCP hooks and tool-result contract you need.
 import React, { useCallback, useState } from "react";
 import {
     useApp,

@@ -1,3 +1,9 @@
+"""Register and serve the compiled UI resource for ``say_hello``.
+
+Change ``VIEW_URI`` with the matching value in the tool, and update ``VIEW_PATH``
+only if you change the frontend build output location.
+"""
+
 from pathlib import Path
 
 from fastmcp.apps import AppConfig

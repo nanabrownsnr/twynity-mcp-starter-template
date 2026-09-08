@@ -1,1 +1,1 @@
-"""UI resource and frontend source for the say_hello tool."""
+"""Example UI paired with ``tools.say_hello``; copy it for your own App."""

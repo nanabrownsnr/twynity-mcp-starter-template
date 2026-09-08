@@ -1,5 +1,6 @@
 {
     "name": "fastmcp-app-starter-ui",
+    "description": "Builds the say_hello React UI; rename this package when replacing the example App.",
     "private": true,
     "type": "module",
     "scripts": {

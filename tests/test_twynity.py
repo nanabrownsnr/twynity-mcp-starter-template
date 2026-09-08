@@ -1,3 +1,8 @@
+"""Verify Twynity's public manifest and health custom routes.
+
+Extend this module when adding or changing custom HTTP routes in twynity.py.
+"""
+
 import pytest
 from fastmcp import FastMCP
 from starlette.testclient import TestClient

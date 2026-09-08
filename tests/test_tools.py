@@ -1,3 +1,8 @@
+"""Verify the example tool's model output, UI data, and renderer metadata.
+
+Use this test shape for every tool-to-App contract added to the starter.
+"""
+
 import pytest
 from fastmcp import FastMCP
 

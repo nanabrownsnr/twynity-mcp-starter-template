@@ -9,6 +9,16 @@ manifest and health routes, container setup, and deployment workflow. The
 example feature is intentionally small: a `say_hello` tool renders
 `Hello, <name>!` inside an interactive, client-themed React UI.
 
+## Example output
+
+Calling `say_hello` opens the MCP App in the client's available UI space:
+
+![The initial Hello World tool result and MCP App](docs/images/mcp-app-initial-greeting.png)
+
+The user can then enter a name and update the greeting directly from the App:
+
+![The MCP App updated with a personalised greeting](docs/images/mcp-app-updated-greeting.png)
+
 ## Understand the tool-to-UI flow
 
 An MCP App consists of a tool and a UI resource joined by the same `ui://` URI:
@@ -233,9 +243,14 @@ registry, and GitOps deployment sequence.
 
 ## Repository rules
 
+- `uv.lock` and `app/ui/say_hello/package-lock.json` are generated dependency
+  snapshots. Regenerate them with uv/npm commands instead of editing them.
 - Do not commit `.env`, runtime logs, `node_modules`, Python bytecode, or
   `app/ui/*/dist`.
 - Commit `uv.lock` so backend dependency resolution remains repeatable.
 - Commit `package-lock.json` so UI dependency resolution remains repeatable.
 - Rebuild the UI before local integration testing.
 - Let the Docker build produce the deployable UI bundle for releases.
+
+
+screenshot 

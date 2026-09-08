@@ -1,3 +1,9 @@
+"""Example MCP tool and tool-to-UI contract.
+
+Copy or replace this module for your own tool, preserving the UI URI and result
+metadata pattern when that tool should render an MCP App.
+"""
+
 from fastmcp.apps import AppConfig
 from fastmcp.tools import ToolResult
 

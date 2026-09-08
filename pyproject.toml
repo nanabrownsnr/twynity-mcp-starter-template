@@ -1,3 +1,5 @@
+# Python project, dependency, test, and lint configuration. Rename the project
+# and manage dependencies with `uv add`; do not edit the generated uv.lock.
 [project]
 name = "twynity-mcp-starter-template"
 version = "0.1.0"

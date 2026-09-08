@@ -1,3 +1,10 @@
+"""Register Twynity's well-known manifest and health HTTP routes.
+
+FastMCP's JWT verifier protects its MCP transport, not custom routes by
+default. These two routes are intentionally public; add explicit authorization
+inside any new custom route that should be protected.
+"""
+
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 

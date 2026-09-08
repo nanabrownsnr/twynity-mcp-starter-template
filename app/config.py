@@ -1,3 +1,8 @@
+"""Define service identity, environment settings, and logging.
+
+Set ``mcp_name`` and extend ``Settings`` when your MCP needs new configuration.
+"""
+
 import logging
 import os
 from logging.handlers import TimedRotatingFileHandler

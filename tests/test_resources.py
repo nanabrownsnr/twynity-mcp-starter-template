@@ -1,3 +1,8 @@
+"""Verify the UI resource registration and generated bundle contract.
+
+Add assertions here when changing resource metadata or frontend build output.
+"""
+
 import pytest
 from fastmcp import FastMCP
 

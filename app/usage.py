@@ -1,3 +1,9 @@
+"""Forward authenticated tool-call usage to Twynity's reporting service.
+
+Keep the reporting contract unless the Twynity API changes; add new tracked MCP
+operations at the middleware call site in ``main.py``.
+"""
+
 from datetime import UTC, datetime
 from logging import getLogger
 

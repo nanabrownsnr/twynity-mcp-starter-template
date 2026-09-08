@@ -1,3 +1,8 @@
+"""Provide safe environment defaults and shared fixtures for starter tests.
+
+Add reusable fixtures here; never replace these placeholders with live secrets.
+"""
+
 import os
 
 import pytest

@@ -1,3 +1,5 @@
+# Local/generated files that must not be committed. Extend this list when new
+# tools introduce build outputs, caches, credentials, or runtime artifacts.
 app/ui/*/node_modules/
 app/ui/*/dist/
 .mapvenv/

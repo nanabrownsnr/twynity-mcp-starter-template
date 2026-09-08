@@ -1,1 +1,1 @@
-"""MCP App user interfaces, grouped by their matching tool name."""
+"""MCP App interfaces; add one subpackage named after each UI-enabled tool."""

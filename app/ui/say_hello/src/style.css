@@ -1,3 +1,5 @@
+/* Host-aware presentation for the example App. Replace these styles with your
+   design while preserving responsive sizing and host-variable fallbacks. */
 :root {
     color-scheme: light dark;
     font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);

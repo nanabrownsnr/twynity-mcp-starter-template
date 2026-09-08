@@ -1,3 +1,9 @@
+"""Compose and expose the FastMCP ASGI application.
+
+Import and register new tools/resources here. Twynity-specific HTTP routes live
+in ``twynity.py`` and are separate from FastMCP's JWT-protected MCP transport.
+"""
+
 import asyncio
 from contextlib import asynccontextmanager, suppress
 from logging import getLogger

@@ -1,5 +1,5 @@
-# Build the MCP App from source. The generated dist/ directory is deliberately
-# not committed to the template repository.
+# Builds the MCP App and production Python runtime. Update the UI COPY paths
+# when renaming the example; generated dist/ files stay out of source control.
 FROM node:22-alpine AS ui-builder
 
 WORKDIR /ui

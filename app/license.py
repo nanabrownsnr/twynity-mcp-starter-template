@@ -1,3 +1,9 @@
+"""Run Twynity license activation and periodic validation.
+
+Most MCP authors should leave this production integration intact; change it
+only when the Twynity licensing contract or failure policy changes.
+"""
+
 import asyncio
 import sys
 import uuid
