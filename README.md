@@ -112,6 +112,10 @@ The name input is a controlled React field. Submitting the form calls
 `AppConfig.visibility`; this example uses `["model", "app"]` so both the model
 and UI can call it.
 
+The example also enables `useApp({ autoResize: true })`. Its document and root
+styles provide a useful intrinsic minimum height and stretch to the host's
+available iframe height, allowing the host to resize the App dynamically.
+
 ## 4. Link the tool and UI
 
 Choose one stable URI and use it in both places:

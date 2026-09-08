@@ -9,17 +9,38 @@
     box-sizing: border-box;
 }
 
+html,
 body {
-    min-height: 180px;
+    width: 100%;
+    min-height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: max(22rem, 100dvh);
     margin: 0;
-    display: grid;
-    place-items: center;
+    display: flex;
     background: transparent;
 }
 
+#root {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    min-height: inherit;
+}
+
 .card {
-    width: min(100%, 34rem);
-    padding: 1.5rem;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: inherit;
+    padding: clamp(1rem, 4vw, 2.5rem);
     border: 1px solid var(--color-border-primary, color-mix(in srgb, CanvasText 18%, transparent));
     border-radius: var(--border-radius-lg, 0.875rem);
     background: var(--color-background-secondary, Canvas);
@@ -37,13 +58,15 @@ body {
 
 h1 {
     margin: 0;
-    font-size: 1.75rem;
+    font-size: clamp(1.75rem, 5vw, 3rem);
     line-height: 1.2;
+    overflow-wrap: anywhere;
 }
 
 .greeting-form {
     display: grid;
     gap: 0.5rem;
+    width: min(100%, 42rem);
     margin-top: 1.25rem;
 }
 
@@ -97,4 +120,14 @@ button:focus-visible {
     margin: 0.75rem 0 0;
     color: var(--color-text-secondary, GrayText);
     font-size: 0.875rem;
+}
+
+@media (max-width: 30rem) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
 }

@@ -31,6 +31,9 @@ export default function HelloApp() {
         appInfo: { name: "starter-mcp-ui", version: "1.0.0" },
         capabilities: {},
         onAppCreated,
+        // Report the document's responsive height so the host can grow or
+        // shrink its iframe as the available conversation space changes.
+        autoResize: true,
     });
 
     // These hooks keep the app in sync with the MCP client's theme, CSS
